@@ -16,7 +16,39 @@ bg4 :   #7c6f64
 body {
     background-color: #32302f;
     margin: 0;
+    font-family: monospace;
 }
+
+h1 {
+    color: #7c6f64;
+    margin-top: 40pt;
+}
+
+.fileSelection {
+    padding-top: 10pt;
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 50pt;
+    margin-bottom: 50pt;
+    width: 200pt;
+}
+
+#imagePicker {
+    font-family: monospace;
+    color: #7c6f64;
+    outline: none;
+    text-decoration: none;
+    border: none;
+}
+
+.addButton {
+    padding: 3pt;
+    padding-left: 8pt;
+    padding-right: 7pt;
+    border-radius: 1mm;
+    font-size: 15px;
+}
+
 
 .container {
     display: flex;
@@ -33,13 +65,14 @@ body {
     -moz-box-shadow:    inset 0 0 6mm rgba(0, 0, 0, 0.05);
     -webkit-box-shadow: inset 0 0 6mm rgba(0, 0, 0, 0.05);
     box-shadow:         inset 0 0 6mm rgba(0, 0, 0, 0.05);
-    margin-left: 20pt;
+    margin-left: 0pt;
     margin-right: 20pt;
     margin-top: 20pt;
     padding: 6mm;
-    padding-top: 0;
+    padding-top: 3mm;
     min-width: 250pt;
-    max-width: 900pt;
+    max-width: 600pt;
+    resize: both;
 }
 
 .displayContainer {
@@ -49,32 +82,84 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: flex-start;
     align-content: space-between;
 }
 
 button {
     font-size: 20px;
-    font-family: monospace;
     background-color: #b8bb26;
     color: #282828;
     text-decoration: none;
-    padding-left: 9pt;
-    padding-right: 5pt;
-    padding-top: 2pt;
-    padding-bottom: 4pt;
-    border-top-left-radius: 3mm;
-    border-top-right-radius: 1mm;
 
     border: none;
     outline: none;
     filter: drop-shadow(0 0 4mm rgba(0, 0, 0, 0.3));
 }
 
+.runButton {
+    padding-left: 9pt;
+    padding-right: 5pt;
+    padding-top: 2pt;
+    padding-bottom: 4pt;
+    border-top-left-radius: 3mm;
+    border-top-right-radius: 1mm;
+}
+
+button:hover {
+    background-color: #98971a;
+}
+
 button:active {
     background-color: #98971a;
     color: #ebdbb2;
+}
+
+.attributesTray {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 0 4mm rgba(0, 0, 0, 0.3));
+}
+
+.inputDescription {
+    margin-top: 0;
+    color: #ebdbb2;
+    width: 60pt;
+    height: 22pt;
+    font-size: 16px;
+    text-align: center;
+    vertical-align: center;
+    background-color: #3c3836;
+    margin-right: 3mm
+
+}
+#heightInput, #widthInput {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #504945;
+    color: #ebdbb2;
+    border: none;
+    outline: none;
+    font-family: monospace;
+    width: 60pt;
+    height: 22pt;
+    text-align: center;
+    padding-bottom: 1pt;
+}
+
+#widthInput {
+    border-bottom-left-radius: 3mm;
+    border-bottom-right-radius: 1mm;
+
+    border-left-color: #504945;
+}
+
+#heightInput {
+    border-bottom-right-radius: 3mm;
+    border-bottom-left-radius: 1mm;
+
 }
 
 #glslCanvas {

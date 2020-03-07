@@ -15,8 +15,15 @@
         <title>FRAG - Image Editor for Programmers</title>
     </head>
     <body>
+        <h1> Add images </h1>
+        <div class = "fileSelection">
+            <input id = "imagePicker" onchange="onFileSubmit(event)" type="url" accept=".png, .PNG, .jpeg, .jpg, .JPEG, .JPG"> </input>
+            <button class = "addButton"> add() </button>
 
+            <div id = "imageSection">
 
+            </div>
+        </div>
 
         <div class = "container">
             <pre> <code id = "editor" contenteditable="true" spellcheck = false class="language-glsl">
@@ -26,8 +33,17 @@ void main() {
     gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }</code></pre>
             <div class = "displayContainer">
-                <button onclick = "onRun()"> run() </button>
-                <canvas id="glslCanvas" width="300" height="300"></canvas>
+                <button class = "runButton" onclick = "onRun()"> run() </button>
+                <canvas id="glslCanvas" width="480" height="360" data-textures = "https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@1.5x.png"></canvas>
+                <div class = "attributesTray">
+                    <p class = "inputDescription"> width
+                        <input class = "widthInput" value = "480" id = "widthInput"></input>
+                    </p>
+                    <p class = "inputDescription"> height
+                        <input id="heightInput" value="360"></input>
+                    </p>
+
+                </div>
             </div>
         </div>
 
@@ -37,3 +53,29 @@ void main() {
     <script type="text/javascript" src = "js/editor.js"> </script>
 
 </html>
+
+
+<!--
+
+
+
+// default code
+
+
+precision mediump float;
+uniform vec2 u_resolution;
+uniform sampler2D u_tex0;
+
+
+void main() {
+	vec2 st = gl_FragCoord.xy / u_resolution.xy;
+	vec4 text = texture2D(u_tex0, st);
+
+	vec3 color = text.rgb;
+	color = vec3(1.0-color.r, 1.0-color.g, 1.0-color.b);
+    gl_FragColor = vec4(color, 1.0);
+}
+
+
+
+-->
