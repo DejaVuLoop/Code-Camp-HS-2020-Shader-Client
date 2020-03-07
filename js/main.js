@@ -5,6 +5,15 @@ let editor;
 images = [];
 
 
+function createImageObject(name, url) {
+    var dict = {};
+    dict["name"] = name;
+    dict["url"] = url;
+
+    return dict;
+}
+
+
 setup();
 
 function setup() {
@@ -23,27 +32,30 @@ function onRun() {
     editor = document.getElementById("editor");
     var code = editor.textContent;
 
-    counter = 0;
-    for (var image in images) {
-        console.log("adding");
-        //sandbox.setUniform("u_tex" + counter, "https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@1.5x.png");
-        sandbox.setUniform("u_tex"+counter, image);
-        counter++;
+    for (i=0; i< images.length; i++) {
+        var image = images[i];
+        console.log(image['url']);
+        sandbox.setUniform(image.name, image.url);
     }
+
     sandbox.load(code);
 }
 
-function onFileSubmit(event) {
-    var reader = new FileReader();
-    var name = event.target.files[0].name;
-    reader.addEventListener("load", function() {
-        if (this.result && localStorage) {
-            images[images.length] = this.result;
-            console.log("added");
-        }
-            else {
-                alert()
-            }
-        });
-        reader.readAsDataURL(event.target.files[0]);
+function onUrlSubmit() {
+    var picker = document.getElementById("imagePicker")
+    var url = picker.value;
+    if (url != "" ) {
+        var name = "u_tex" + images.length;
+
+        var image = createImageObject(name, url);
+        images[images.length] = image;
+
+        var li = document.createElement("LI");
+        var txt = document.createTextNode(name);
+        li.appendChild(txt);
+        document.getElementById("imageSection").appendChild(li);
+
+        picker.value = null;
     }
+
+}

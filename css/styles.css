@@ -165,3 +165,48 @@ button:active {
 #glslCanvas {
     filter: drop-shadow(0 2mm 4mm rgba(0, 0, 0, 0.3));
 }
+
+#imageSection {
+    padding-left: 40pt;
+    max-width: 100pt;
+
+}
+
+.imagesHeader {
+    color: #ebdbb2;
+    font-size:16px;
+    margin: 0 auto;
+}
+
+li {
+    margin-top: 5pt;
+    margin-left: 30pt;
+    color: #ebdbb2;
+}
+
+#title {
+    font-size : 48px;
+}
+
+.readme {
+    margin: 0 auto;
+    resize: none;
+
+    tab-size: 4;
+    outline: none;
+    border-color: #282828;
+    border-radius: 1mm;
+    -moz-box-shadow:    inset 0 0 6mm rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: inset 0 0 6mm rgba(0, 0, 0, 0.05);
+    box-shadow:         inset 0 0 6mm rgba(0, 0, 0, 0.05);
+    margin-left: 0pt;
+    margin-top: 60pt;
+
+    height: 300pt;
+    padding: 6mm;
+    padding-top: 3mm;
+}
+
+.stop {
+    margin: 0;
+}

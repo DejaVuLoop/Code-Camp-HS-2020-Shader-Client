@@ -15,37 +15,87 @@
         <title>FRAG - Image Editor for Programmers</title>
     </head>
     <body>
-        <h1> Add images </h1>
+        <h1 id = "title"> FRAG - The Image Editor for Coders </h1>
+        <h1> Add images by Url </h1>
         <div class = "fileSelection">
-            <input id = "imagePicker" onchange="onFileSubmit(event)" type="url" accept=".png, .PNG, .jpeg, .jpg, .JPEG, .JPG"> </input>
-            <button class = "addButton"> add() </button>
-
-            <div id = "imageSection">
-
-            </div>
+            <input id = "imagePicker" type="url"> </input>
+            <button class = "addButton" onclick = "onUrlSubmit()"> add() </button>
         </div>
+
+        <ul id = "imageSection">
+            <p class="imagesHeader">  images: </p>
+        </ul>
 
         <div class = "container">
             <pre> <code id = "editor" contenteditable="true" spellcheck = false class="language-glsl">
-// default code
+precision mediump float;
+
+uniform vec2 u_resolution;
+uniform sampler2D u_tex0;
+
 
 void main() {
-    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+	vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+	vec4 color = texture2D(u_tex0, uv);
+
+    gl_FragColor = color;
 }</code></pre>
             <div class = "displayContainer">
                 <button class = "runButton" onclick = "onRun()"> run() </button>
-                <canvas id="glslCanvas" width="480" height="360" data-textures = "https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@1.5x.png"></canvas>
+                <canvas id="glslCanvas" width="300" height="300" ></canvas>
                 <div class = "attributesTray">
                     <p class = "inputDescription"> width
-                        <input class = "widthInput" value = "480" id = "widthInput"></input>
+                        <input class = "widthInput" value = "300" id = "widthInput"></input>
                     </p>
                     <p class = "inputDescription"> height
-                        <input id="heightInput" value="360"></input>
+                        <input id="heightInput" value="300"></input>
                     </p>
 
                 </div>
             </div>
         </div>
+
+        <pre class = "stop"> <code class = "readme"  contenteditable="false" spellcheck = false class="language-glsl">
+// Read Me!
+
+// FRAG is the image editor made for coders.
+
+// With this useful web page, you can use GLSL shader code to edit images!
+
+// To bring in an image, enter in a url at the top of the page, then click add().
+
+// A name will by assigned to the image as it is imported. The names of imported images will be listed directly below.
+
+// To use the image in the shader, use the following code to import it:
+
+uniform Sampler2D IMAGE_NAME;
+
+// The editor window is preloaded with example code to get you started!
+
+// the following uniforms are automatically provided for you:
+
+float u_time // represents elapsed time in seconds.
+
+vec2 u_mouse // represents the position of the mouse
+
+vec2 u_resolution // represents the dimensions of the viewport.
+
+// CREDITS :
+
+
+// glslCanvas : https://github.com/patriciogonzalezvivo/glslCanvas
+
+// Syntax highlighting : https://highlightjs.org/
+
+// Color theme : https://github.com/morhetz/gruvbox
+
+
+
+//    Enjoy!
+//       David Cosby, 3/7/2020
+
+        </code></pre>
+
 
     </body>
 
@@ -59,7 +109,7 @@ void main() {
 
 
 
-// default code
+// Color Invert
 
 
 precision mediump float;
@@ -68,13 +118,41 @@ uniform sampler2D u_tex0;
 
 
 void main() {
-	vec2 st = gl_FragCoord.xy / u_resolution.xy;
-	vec4 text = texture2D(u_tex0, st);
+	vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+	vec4 color = texture2D(u_tex0, uv);
 
-	vec3 color = text.rgb;
-	color = vec3(1.0-color.r, 1.0-color.g, 1.0-color.b);
-    gl_FragColor = vec4(color, 1.0);
+	color = vec4(1.0-color.r, 1.0-color.g, 1.0-color.b, 1.0);
+    gl_FragColor = color;
 }
+
+
+
+
+// Greyscale
+
+precision mediump float;
+uniform vec2 u_resolution;
+uniform sampler2D u_tex0;
+
+vec4 avg(vec4 color) {
+    float mean = (color.r + color.g + color.b) / 3.0;
+    return vec4(mean, mean, mean, 1.0);
+}
+
+void main() {
+	vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+	vec4 color = texture2D(u_tex0, uv);
+
+	color = avg(color);
+    gl_FragColor = color;
+}
+
+
+
+
+
+
+https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/330px-Wikipedia-logo-v2.svg.png
 
 
 
