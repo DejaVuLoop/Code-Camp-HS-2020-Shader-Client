@@ -1,14 +1,20 @@
+let canvas;
+let sandbox;
+let editor;
+
 function setup() {
-    var canvas = document.getElementById("glslCanvas");
-    var sandbox = new GlslCanvas(canvas);
+    canvas = document.getElementById("glslCanvas");
+    sandbox = new GlslCanvas(canvas);
 
-    console.log("entered7");
-    var string_frag_code = "void main() { gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);}";
-
-    sandbox.load(string_frag_code);
-
-    sandbox.backgroundColor = "black";
+    onRun();
 }
-
-
 setup();
+
+
+
+function onRun() {
+    editor = document.getElementById("editor");
+
+    var code = editor.textContent;
+    sandbox.load(code);
+}

@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #editor {
@@ -45,11 +45,11 @@ body {
 .displayContainer {
     margin-left: 20pt;
     margin-right: 20pt;
-    margin-top: 40pt;
+    margin-top: 20pt;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: flex-start;
     align-content: space-between;
 }
@@ -60,8 +60,13 @@ button {
     background-color: #b8bb26;
     color: #282828;
     text-decoration: none;
-    padding-left: 10pt;
-    padding-right: 10pt;
+    padding-left: 9pt;
+    padding-right: 5pt;
+    padding-top: 2pt;
+    padding-bottom: 4pt;
+    border-top-left-radius: 3mm;
+    border-top-right-radius: 1mm;
+
     border: none;
     outline: none;
     filter: drop-shadow(0 0 4mm rgba(0, 0, 0, 0.3));
