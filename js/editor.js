@@ -1,5 +1,5 @@
 let lastThemeApplicationAttempt;
-let timeBetweenApplications = 2500; // ms
+let timeBetweenApplications = 3000; // ms
 
 
 function getCurrentTime() {
@@ -13,22 +13,18 @@ function attemptThemeApplication() {
         return;
     }
     else {
-        var editor = document.getElementById("editor");
-
-        var start = editor.selectionStart;
-        var end = editor.selectionEnd;
 
         hljs.initHighlighting.called = false;
         hljs.initHighlighting();
+
+        if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+        }
 
     }
 }
 
 $(document).keydown(function(objEvent) {
-
-    lastThemeApplicationAttempt = getCurrentTime();
-    setTimeout(() => { attemptThemeApplication() }, timeBetweenApplications);
-
     if (objEvent.keyCode == 9) {  //tab pressed
         objEvent.preventDefault(); // stops its action
 
@@ -45,5 +41,9 @@ $(document).keydown(function(objEvent) {
         sel.removeAllRanges();
         sel.addRange(range);
 
+    }
+    else {
+        lastThemeApplicationAttempt = getCurrentTime();
+        setTimeout(() => { attemptThemeApplication() }, timeBetweenApplications);
     }
 })
