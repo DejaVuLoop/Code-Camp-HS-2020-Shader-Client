@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
-
+        <!-- css -->
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- opengl -->
+        <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
+        <!-- text editor specific stuff -->
         <link rel="stylesheet" href="css/gruvbox-dark.css">
         <script src="js/highlight.pack.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
@@ -12,7 +16,7 @@
     </head>
     <body>
 
-        <pre> <code id = "editor" contenteditable="true" spellcheck = false class="language-glsl" onkeydown = "keyDown()">
+        <pre> <code id = "editor" contenteditable="true" spellcheck = false class="language-glsl">
 void main() {
     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
